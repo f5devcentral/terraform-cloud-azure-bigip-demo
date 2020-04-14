@@ -42,7 +42,7 @@ ssh-keygen -m PEM -t rsa
 If you don't already have account on [Terraform Cloud](https://app.terraform.io), please create one.
 
 When you are logged into you Terraform Cloud account select organization settings  
-![click org settings][orgsettings | width=150]  
+![click org settings][orgsettings]  
 
 and then select VCS Providers and follow the instructions to setup a provider for the repository containing your fork of this repository.  
 ![click vcs providers][vcsproviders]  
