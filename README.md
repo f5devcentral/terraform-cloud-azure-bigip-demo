@@ -11,8 +11,8 @@ After those steps, you should now be ready to kick the tires by queuing a plan
 
 
 
-# Workspace Configuration
-In the variables.tf there is a `specification` variable that contains HCL maps named with a reference to a workspace. For example, the map below is used when the east workspace is selected using ```terraform workspace select east```
+### Workspace Configuration
+In the variables.tf there is a `specification` variable that contains HCL maps. The one in use for your workspace is identified in the **specification_name** variable you setup during the [variables steps](TFCVARS.md). For example, the map below is used when setting **specification_name** to **east**
 
 ```
         east = {
@@ -26,7 +26,12 @@ In the variables.tf there is a `specification` variable that contains HCL maps n
         }
 ```
 
-if you need to create support for another workspace duplicate an existing map, add it to the array, and adjust values as appropriate. For example, if you need to add support for `francecentral` you could do as follows;
+Do the following if you need to create support for another branch/environment.
+- duplicate an existing map
+- add it to the array
+- adjust values as appropriate 
+
+For example, if you need to add support for `francecentral` you could do as follows;
 
 ```
         east = {
