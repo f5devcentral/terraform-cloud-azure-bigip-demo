@@ -42,14 +42,14 @@ ssh-keygen -m PEM -t rsa
 If you don't already have account on [Terraform Cloud](https://app.terraform.io), please create one.
 
 When you are logged into you Terraform Cloud account select organization settings  
-![click org settings][orgsettings]
+![click org settings][orgsettings]  
 
 and then select VCS Providers and follow the instructions to setup a provider for the repository containing your fork of this repository.  
-![click vcs providers][vcsproviders]
+![click vcs providers][vcsproviders]  
 
 ### Setup a Terraform Cloud Workspace
 Once the VCS provider is setup, show the organization Workspaces page.  
-![click org settings][orgsettings]
+![click org settings][orgsettings]  
 On the workspaces page, select the New Workspace button.  
 ![click + New Workspace][newworkspace]  
 
