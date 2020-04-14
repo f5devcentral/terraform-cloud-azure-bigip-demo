@@ -1,0 +1,50 @@
+{
+    "class": "AS3",
+    "action": "deploy",
+    "persist": true,
+    "declaration": {
+        "class": "ADC",
+        "schemaVersion": "3.0.0",
+        "id": "${as3_id}",
+        "label": "Sample 1",
+        "remark": "HTTP demo",
+        "as3": {
+            "class": "Tenant",
+            "A1": {
+                "class": "Application",
+                "template": "http",
+                "serviceMain": {
+                    "class": "Service_HTTP",
+                    "virtualAddresses": [
+                        ${application_external_ip}
+                    ],
+                    "virtualPort": 80,
+                    "pool": "web_pool",
+                    "persistenceMethods": []
+                },
+                "web_pool": {
+                    "class": "Pool",
+                    "monitors": [
+                        "http"
+                    ],
+                    "members": [
+                        {
+                            "servicePort": 80,
+                            "addressDiscovery": "azure",
+                            "updateInterval": 10,
+                            "tagKey": "workload",
+                            "tagValue": "nginx",
+                            "addressRealm": "private",
+                            "resourceGroup": "${azure_resource_group}",
+                            "subscriptionId": "${azure_subcription_id}",
+                            "directoryId": "${azure_tenant_id}",
+                            "applicationId": "${azure_client_id}",
+                            "apiAccessKey": "${azure_client_secret}",
+                            "credentialUpdate": false
+                        }                        
+                    ]
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,10 @@
+#cloud-config
+
+runcmd:
+  - sudo apt-get -y update
+  - sudo apt-get -y install nginx
+  - sudo systemctl enable nginx
+  - sudo wget https://raw.githubusercontent.com/nginxinc/NGINX-Demos/master/nginx-hello/index.html --output-document /usr/share/nginx/html/index.html
+  - sudo wget https://raw.githubusercontent.com/nginxinc/NGINX-Demos/master/nginx-hello/hello.conf --output-document /etc/nginx/sites-enabled/default
+  - sudo systemctl start nginx
+  - sudo systemctl reload nginx

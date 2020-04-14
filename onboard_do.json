@@ -1,0 +1,99 @@
+{
+    "schemaVersion": "1.0.0",
+    "class": "Device",
+    "async": true,
+    "label": "Onboard BIG-IP",
+    "Common": {
+        "class": "Tenant",
+        "hostname": "${bigip_hostname}",
+%{ if bigip_license != "" ~}
+        "myLicense": {
+            "class": "License",
+            "licenseType": "regKey",
+            "regKey": "${bigip_license}",
+            "overwrite": true
+        },
+%{ endif ~}
+%{ if bigiq_license_host != "" ~}
+        "myLicense": {
+            "class": "License",
+            "licenseType": "licensePool",
+            "bigIqHost": "${bigiq_license_host}",
+            "bigIqUsername": "${bigiq_license_username}",
+            "bigIqPassword": "${bigiq_license_password}",
+            "licensePool": "${bigiq_license_licensepool}",
+            "skuKeyword1": "${bigiq_license_skuKeyword1}",
+            "skuKeyword2": "${bigiq_license_skuKeyword2}",
+            "unitOfMeasure": "${bigiq_license_unitOfMeasure}",
+            "reachable": false,
+            "hypervisor": "${bigiq_hypervisor}",
+            "overwrite": true
+        },
+%{ endif ~}
+        "myDns": {
+            "class": "DNS",
+            "nameServers": [
+                ${name_servers}
+            ],
+            "search": [
+                "f5.com"
+            ]
+        },
+        "myNtp": {
+            "class": "NTP",
+            "servers": [
+                ${ntp_servers}
+            ],
+            "timezone": "UTC"
+        },
+        "myProvisioning": {
+            "class": "Provision",
+            "ltm": "nominal",
+            "asm": "nominal"
+        },
+        "external": {
+            "class": "VLAN",
+            "tag": 10,
+            "mtu": 1500,
+            "interfaces": [
+                {
+                    "name": "1.1",
+                    "tagged": false
+                }
+            ]
+        },
+        "internal": {
+            "class": "VLAN",
+            "tag": 20,
+            "mtu": 1500,
+            "interfaces": [
+                {
+                    "name": "1.2",
+                    "tagged": false
+                }
+            ]
+        },
+        "internal-self": {
+            "class": "SelfIp",
+            "address": "${internal_self_ip}/24",
+            "vlan": "internal",
+            "allowService": "default",
+            "trafficGroup": "traffic-group-local-only"
+        },
+        "external-self": {
+            "class": "SelfIp",
+            "address": "${external_self_ip}/24",
+            "vlan": "external",
+            "allowService": [
+                "tcp:443"
+            ],
+            "trafficGroup": "traffic-group-local-only"
+        },
+        "default_gateway": {
+            "class": "Route",
+            "gw": "${default_gateway_ip}",
+            "network": "default",
+            "mtu": 1500
+        }
+    }
+}
