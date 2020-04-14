@@ -6,10 +6,8 @@ Now that we've configured the Azure account, created a Service Principal, and se
 
 With the workspace in place we need to [setup the variables](TFCVARS.md) that are necessary for the workspace to create a plan and an apply.
 
-
-
-
-kick the tires, and then
+After those steps, you should now be ready to kick the tires by queuing a plan
+![queue the plan][queueplan]
 
 
 
@@ -63,7 +61,7 @@ if you need to create support for another workspace duplicate an existing map, a
 
 ```
 
-
+[queueplan]:doc_assets/queuetheplan.png
 
 
 
