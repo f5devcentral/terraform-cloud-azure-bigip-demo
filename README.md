@@ -117,7 +117,7 @@ if you need to create support for another workspace duplicate an existing map, a
 ```
 
 
-[orgsettings]:doc_assets/orgsettings.png
+[orgsettings]:doc_assets/orgsettings.png =100x
 [vcsproviders]:doc_assets/vcssettings.png
 [newworkspace]:doc_assets/newworkspace.png
 [vcssettings]:doc_assets/vcssettings.png
