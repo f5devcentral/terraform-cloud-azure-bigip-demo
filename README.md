@@ -48,18 +48,18 @@ and then select VCS Providers and follow the instructions to setup a provider fo
 ![click vcs providers][vcsproviders]  
 
 ### Setup a Terraform Cloud Workspace
-Once the VCS provider is setup, show the organization Workspaces page.  
+- Once the VCS provider is setup, show the organization Workspaces page.  
 ![click org settings][orgsettings]  
-On the workspaces page, select the New Workspace button.  
+- On the workspaces page, select the New Workspace button.  
 ![click + New Workspace][newworkspace]  
-Select the vcs provider you previously configured  
+- Select the vcs provider you previously configured  
 ![select the vcs provider][selectvcs]  
-Select the forked repository on the VCS provider  
+- Select the forked repository on the VCS provider  
 ![select the repository][selectrepo]  
-Set the configuration of the repository integration. It's suggested that you explicitly set the branch name rather than accept the default under the Advanced settings.  
+- Set the configuration of the repository integration. It's suggested that you explicitly set the branch name rather than accept the default under the Advanced settings.  
 ![setup the repo][reposettings]  
 
-and click Create workspace  
+- and click Create workspace  
 
 
 kick the tires, and then
