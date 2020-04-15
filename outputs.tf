@@ -14,10 +14,6 @@ output "bigip_mgmt_port" {
   value = "443"
 }
 
-output "bigip_password" {
-  value = random_password.bigippassword.result
-}
-
 output "jumphost_ip" {
   value = azurerm_public_ip.jh_public_ip[*].ip_address
 }

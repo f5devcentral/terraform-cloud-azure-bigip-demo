@@ -5,13 +5,13 @@ title "Verify BIG-IP availability"
 
 # load data from Terraform output
 # created by terraform output --json > inspec/bigip-ready/files/terraform.json
-content = inspec.profile.file("terraform.json")
-params = JSON.parse(content)
+passwordcontent = inspec.profile.file("password.json").gsub /"/,''
+addresscontent  = inspec.profile.file("mgmtips.json").gsub /"/,''
 
 begin
-  BIGIP_DNS       = params['bigip_mgmt_public_ips']['value']
-  BIGIP_PORT      = params['bigip_mgmt_port']['value']
-  BIGIP_PASSWORD  = params['bigip_password']['value']
+  BIGIP_DNS       = addresscontent.split("\n")
+  BIGIP_PORT      = 443 # params['bigip_mgmt_port']['value']
+  BIGIP_PASSWORD  = passwordcontent.strip
 rescue
   BIGIP_DNS       = []
   BIGIP_PORT      = ""
