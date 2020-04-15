@@ -1,4 +1,5 @@
-This terraform repository uses [Terraform Cloud](https://app.terraform.io/) to manage multiple parallel builds. 
+## Managing F5 BIG-IP deployments in Azure with HashiCorp Terraform Cloud
+This repository uses [Terraform Cloud](https://app.terraform.io/) to manage multiple parallel environment builds. Before you can run the demonstration code there are a few setup steps.
 
 First, let's do the necessary [prework](PREWORK.md) before we can create the Terraform Cloud Workspace.
 
