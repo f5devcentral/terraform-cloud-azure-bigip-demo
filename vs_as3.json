@@ -16,7 +16,7 @@
                 "serviceMain": {
                     "class": "Service_HTTP",
                     "virtualAddresses": [
-                        ${application_external_ip}
+                        "${application_external_ip}"
                     ],
                     "virtualPort": 80,
                     "pool": "web_pool",
