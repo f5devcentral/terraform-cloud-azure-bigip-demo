@@ -245,7 +245,7 @@ resource "azurerm_network_interface" "ext-nic" {
 
   ip_configuration {
     name                          = "juiceshop"
-    subnet_id                     = azurerm_subnet.public[count.index % length(local.azs)].id
+    subnet_id                     = azurerm_subnet.app_public[count.index % length(local.azs)].id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.juiceshop_public_ip[count.index].id
   }
