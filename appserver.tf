@@ -129,9 +129,11 @@ resource "azurerm_network_security_group" "app_sg" {
 
 resource "null_resource" "virtualserverAS3" {
   count = local.ltm_instance_count
-  # cluster owner node
+  # 
   provisioner "local-exec" {
     command = <<-EOT
+        sleep 120 
+
         curl -s -k -X POST https://${azurerm_public_ip.management_public_ip[count.index].ip_address}:443/mgmt/shared/appsvcs/declare \
               -H 'Content-Type: application/json' \
               --max-time 600 \
@@ -146,8 +148,16 @@ resource "null_resource" "virtualserverAS3" {
 
   depends_on = [
     azurerm_linux_virtual_machine.f5bigip,
-    azurerm_virtual_machine_extension.run_startup_cmd
+    azurerm_virtual_machine_extension.run_startup_cmd,
+    null_resource.clusterDO
   ]
+  # if there is any change to the content of the AS3 declaration
+  # resubmit the declaration. this allows for circumstances when
+  # invariant structures are added to the declaration such as
+  # static WAF_Policy updates that Terraform does not notice
+  triggers = {
+    as3_content = data.template_file.virtualserverAS3[count.index].rendered
+  }
 }
 
 data "template_file" "virtualserverAS3" {
