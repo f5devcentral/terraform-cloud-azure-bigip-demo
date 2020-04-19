@@ -8,6 +8,7 @@ and then select VCS Providers and follow the instructions to setup a provider fo
 ![click vcs providers][vcsproviders]  
 
 ### Setup a Terraform Cloud Workspace
+If you would prefer to automate the provisioning of the workspaces in Terraform Cloud, please look at [this repository](https://github.com/mjmenger/terraform-cloud-workspace-provisioning) for assistance in getting that started. Otherwise, continue with the guidance below.
 - Once the VCS provider is setup, show the organization Workspaces page.  
 ![click org settings][orgsettings]  
 - On the workspaces page, select the New Workspace button.  
