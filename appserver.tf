@@ -129,7 +129,10 @@ resource "azurerm_network_security_group" "app_sg" {
 
 resource "null_resource" "virtualserverAS3" {
   count = local.ltm_instance_count
-  # 
+  # the BIG-IP Declarative Onboarding(DO) call in bigip.tf returns a 202, indicating that the declaration was accepted
+  # and is in process. The DO call provisions LTM and ASM on the BIG-IP and therefore the completion of
+  # that call is a necessary precondition for this AS3 declaration which includes configuring a WAF policy.
+  # the 'sleep 120' statement below is a crude mechanism to wait for the DO call to complete processing. 
   provisioner "local-exec" {
     command = <<-EOT
         sleep 120 

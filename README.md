@@ -65,7 +65,6 @@ west = {
 ```
 
 
-
 [queueplan]:doc_assets/queuetheplan.png
 
 
