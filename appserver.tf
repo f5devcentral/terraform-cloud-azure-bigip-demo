@@ -148,6 +148,13 @@ resource "null_resource" "virtualserverAS3" {
     azurerm_linux_virtual_machine.f5bigip,
     azurerm_virtual_machine_extension.run_startup_cmd
   ]
+  # if there is any change to the content of the AS3 declaration
+  # resubmit the declaration. this allows for circumstances when
+  # invariant structures are added to the declaration such as
+  # static WAF_Policy updates that Terraform does not notice
+  triggers = {
+    as3_content = data.template_file.virtualserverAS3[count.index].rendered
+  }
 }
 
 data "template_file" "virtualserverAS3" {
