@@ -354,7 +354,7 @@ resource "null_resource" "clusterDO" {
   # cluster member node
   provisioner "local-exec" {
     command = <<-EOT
-        sleep 120
+        sleep 60
         
         curl -s -k -X POST https://${azurerm_public_ip.management_public_ip[count.index].ip_address}:443/mgmt/shared/declarative-onboarding \
               -H 'Content-Type: application/json' \

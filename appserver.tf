@@ -129,9 +129,11 @@ resource "azurerm_network_security_group" "app_sg" {
 
 resource "null_resource" "virtualserverAS3" {
   count = local.ltm_instance_count
-  # cluster owner node
+  # 
   provisioner "local-exec" {
     command = <<-EOT
+        sleep 120 
+
         curl -s -k -X POST https://${azurerm_public_ip.management_public_ip[count.index].ip_address}:443/mgmt/shared/appsvcs/declare \
               -H 'Content-Type: application/json' \
               --max-time 600 \
