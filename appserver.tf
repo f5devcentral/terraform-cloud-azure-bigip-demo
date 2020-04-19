@@ -168,7 +168,7 @@ data "template_file" "virtualserverAS3" {
   template = file("${path.module}/vs_as3.json")
   vars     = {
     as3_id                  = random_string.as3id.result
-    application_external_ip = jsonencode(azurerm_network_interface.ext-nic[count.index].private_ip_addresses[1])
+    application_external_ip = azurerm_network_interface.ext-nic[count.index].private_ip_addresses[1]
     pool_members            = jsonencode(azurerm_network_interface.app_nic[*].private_ip_address)
     azure_resource_group    = azurerm_resource_group.main.name
     azure_subcription_id    = var.ARM_SUBSCRIPTION
