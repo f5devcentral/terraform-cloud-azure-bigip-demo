@@ -8,7 +8,7 @@
         "id": "${as3_id}",
         "label": "Sample 1",
         "remark": "HTTP demo",
-        "as3": {
+        "NGINX": {
             "class": "Tenant",
             "A1": {
                 "class": "Application",
@@ -20,7 +20,10 @@
                     ],
                     "virtualPort": 80,
                     "pool": "web_pool",
-                    "persistenceMethods": []
+                    "persistenceMethods": [],
+                    "policyWAF": {
+                        "use": "ASM_Policy"
+                    }
                 },
                 "web_pool": {
                     "class": "Pool",
@@ -43,7 +46,12 @@
                             "credentialUpdate": false
                         }                        
                     ]
-                }
+                },
+                "ASM_Policy": {
+                    "class": "WAF_Policy",
+                    "url": "https://github.com/mjmenger/waf-policy/raw/0.1.0/asm_policy.xml",
+                    "ignoreChanges": false
+                }            
             }
         }
     }
