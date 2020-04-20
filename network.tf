@@ -49,7 +49,7 @@ resource "azurerm_subnet" "public" {
 # the issue is addressed
 resource "azurerm_subnet" "app_public" {
     count                = length(local.azs)
-    name                 = format("%s-publicsubnet-%s-%s",var.prefix,count.index,random_id.randomId.hex)
+    name                 = format("%s-apppublicsubnet-%s-%s",var.prefix,count.index,random_id.randomId.hex)
     resource_group_name  = azurerm_resource_group.main.name
     virtual_network_name = azurerm_virtual_network.main.name
     # address prefix 10.2x.1.0/24
