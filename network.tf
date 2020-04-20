@@ -42,19 +42,6 @@ resource "azurerm_subnet" "public" {
     # address prefix 10.2x.0.0/24
     address_prefix       = cidrsubnet(cidrsubnet(local.cidr, 8, 20 + count.index),8,0)
 }
-# Create public/external app subnet
-# this may be necessary due to https://support.f5.com/csp/article/K91528447
-# and https://github.com/F5Networks/f5-appsvcs-extension/issues/186
-# if AS3 declaration after the initial build complete successfully then
-# the issue is addressed
-resource "azurerm_subnet" "app_public" {
-    count                = length(local.azs)
-    name                 = format("%s-apppublicsubnet-%s-%s",var.prefix,count.index,random_id.randomId.hex)
-    resource_group_name  = azurerm_resource_group.main.name
-    virtual_network_name = azurerm_virtual_network.main.name
-    # address prefix 10.2x.1.0/24
-    address_prefix       = cidrsubnet(cidrsubnet(local.cidr, 8, 20 + count.index),8,1)
-}
 # Create private/internal subnet
 resource "azurerm_subnet" "private" {
     count                = length(local.azs)
