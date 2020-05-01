@@ -27,8 +27,14 @@ override.tf.json
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
 # example: *tfplan*
+
+# vs code rest client assets
 *.http
 .env
-
+# Inspec temporary testing files
 inspec.lock
 **/inspec/bigip-ready/files/*
+
+# temporary and reporting locust files 
+**/locust/__pycache__/*
+**/locust/*.csv
