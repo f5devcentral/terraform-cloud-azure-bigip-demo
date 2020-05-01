@@ -65,6 +65,22 @@ west = {
 ```
 
 
+### Another experiment to try
+if you look at [variables.tf](variables.tf) you'll find blocks of environment definitions that look like the following;
+```json
+development = {
+    region            = "westus2"
+    azs               = ["1"]
+    application_count = 3
+    environment       = "demowest"
+    cidr              = "10.0.0.0/8"
+    ltm_instance_count = 2
+    gtm_instance_count = 0
+}
+```
+in a fashion similar to the previous experiment, adjust the value of *application_count* to add one or two more application servers. After you've merged the change and the apply completes in Terraform Cloud, watch what happens to the pool in your BIG-IPs as F5 BIG-IP's Service Discovery works its magic.
+
+
 [queueplan]:doc_assets/queuetheplan.png
 
 
