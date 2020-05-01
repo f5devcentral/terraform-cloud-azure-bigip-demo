@@ -75,6 +75,22 @@ If you look at [vs_as3.json](vs_as3.json) you'll find the following stanza withi
 ```
 This stanza references a [version controlled XML export of a WAF policy](https://github.com/mjmenger/waf-policy/blob/0.1.0/asm_policy.xml). This version is tagged with *0.1.0*. There is another version tagged with *0.2.0*. Try updating the reference to the other version and merge it into the branch of a running environment. See what happens in Terraform Cloud and what happens within your F5 BIG-IP instances. 
 
+### Another experiment to try
+if you look at [variables.tf](variables.tf) you'll find blocks of environment definitions that look like the following;
+```json
+development = {
+    region            = "westus2"
+    azs               = ["1"]
+    application_count = 3
+    environment       = "demowest"
+    cidr              = "10.0.0.0/8"
+    ltm_instance_count = 2
+    gtm_instance_count = 0
+}
+```
+in a fashion similar to the previous experiment, adjust the value of *application_count* to add one or two more application servers. After you've merged the change and the apply completes in Terraform Cloud, watch what happens to the pool in your BIG-IPs as F5 BIG-IP's Service Discovery works its magic.
+
+
 [queueplan]:doc_assets/queuetheplan.png
 
 
