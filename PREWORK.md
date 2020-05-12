@@ -14,7 +14,7 @@ If your account list is longer than one please verify that the default account i
 ```bash
 az account set --subscription="SUBSCRIPTION_ID"
 ```
-We'll now create the Service Principal as a [Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor) which you should read about and understand.
+We'll now create the Service Principal as a [Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor), which you should read about and understand. (TL;DR It's a pretty powerful role.)
 ```bash
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/SUBSCRIPTION_ID"
 ```
