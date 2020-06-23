@@ -5,9 +5,9 @@ provider "azurerm" {
 }
 
 terraform {
-    required_version = "~> 0.12.24"
+    required_version = "~> 0.12.26"
     required_providers {
-        azurerm = "~> 2.2.0"
+        azurerm = "~> 2.15.0"
     }
     backend "remote" {
         organization = "f5-mjmenger"
