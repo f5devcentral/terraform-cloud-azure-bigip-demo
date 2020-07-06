@@ -64,6 +64,16 @@ west = {
 }
 ```
 
+### An experiment to try
+If you look at [vs_as3.json](vs_as3.json) you'll find the following stanza within the declaration.
+```json
+"ASM_Policy": {
+    "class": "WAF_Policy",
+    "url": "https://github.com/mjmenger/waf-policy/raw/0.1.0/asm_policy.xml",
+    "ignoreChanges": false
+}  
+```
+This stanza references a [version controlled XML export of a WAF policy](https://github.com/mjmenger/waf-policy/blob/0.1.0/asm_policy.xml). This version is tagged with *0.1.0*. There is another version tagged with *0.2.0*. Try updating the reference to the other version and merge it into the branch of a running environment. See what happens in Terraform Cloud and what happens within your F5 BIG-IP instances. 
 
 ### Another experiment to try
 if you look at [variables.tf](variables.tf) you'll find blocks of environment definitions that look like the following;
