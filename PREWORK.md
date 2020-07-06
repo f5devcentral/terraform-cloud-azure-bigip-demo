@@ -14,7 +14,7 @@ If your account list is longer than one please verify that the default account i
 ```bash
 az account set --subscription="SUBSCRIPTION_ID"
 ```
-We'll now create the Service Principal
+We'll now create the Service Principal as a [Contributor](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#contributor), which you should read about and understand. (TL;DR It's a pretty powerful role.)
 ```bash
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/SUBSCRIPTION_ID"
 ```
@@ -28,7 +28,7 @@ which returns something like this
   "tenant": "00000000-0000-0000-0000-000000000000"
 }
 ```
-We'll be using the values for appId, password, and tenant later. Please treat these values as sensitive data as they can be used to make significant changes within your Azure account.
+We'll be using the values for appId, password, and tenant later. __Please treat these values as sensitive data__ as they can be used to make __significant changes__ (<-- destructive) within your Azure account.
 
 ### Accept Terms of F5 Pay As You Go image
 This demonstration uses the F5 BIG-IP Pay As You Go license. There are blocks within the code that allow you to use a BIG-IP license or a BIG-IQ license server. However, this README focuses on the use of the hourly image. Before proceeding, your account needs to accept the terms of use for the hourly image, which you can do with the following command. 

@@ -30,6 +30,20 @@ control "Connectivity" do
   end
 end 
 
+control "bigip-cve-2020-5902" do 
+  impact 1.0
+  title "BIG-IP implemented CVE 2020-5902 patch"
+
+  BIGIP_DNS.each do |bigip_host|
+    describe http("https://#{bigip_host}:#{BIGIP_PORT}/tmui/login.jsp/..;/tmui/locallb/workspace/tmshCmd.jsp?command=list+auth+user+admin",
+              method: 'GET',
+              ssl_verify: false) do
+                its('status') { should cmp 404 }
+    end
+  end
+end
+
+
 control "Declarative Onboarding Available" do
   impact 1.0
   title "BIGIP has DO"
