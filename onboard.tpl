@@ -2,6 +2,19 @@
 
 # BIG-IPS ONBOARD SCRIPT
 
+
+tmsh modify sys httpd include '"
+# File ETAG CVE
+FileETag MTime Size
+
+# CVE-2020-5902
+<LocationMatch "\"".*\.\.;.*"\"">
+	Redirect 404 /
+</LocationMatch>"'
+tmsh save sys config
+bigstart restart httpd
+
+
 LOG_FILE=${onboard_log}
 
 if [ ! -e $LOG_FILE ]
