@@ -77,7 +77,7 @@ This stanza references a [version controlled XML export of a WAF policy](https:/
 
 ### Another experiment to try
 if you look at [variables.tf](variables.tf) you'll find blocks of environment definitions that look like the following;
-```json
+```hcl
 development = {
     region            = "westus2"
     azs               = ["1"]
